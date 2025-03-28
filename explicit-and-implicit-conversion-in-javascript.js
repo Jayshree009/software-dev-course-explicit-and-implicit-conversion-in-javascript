@@ -19,14 +19,41 @@ Use console.log() to clearly show the before-and-after type conversions.
 */
 
 
-let result = "5" - 2;
-console.log("The result is: " + result);
+let result = Number("5") - 2; // Explicitly convert "5" to a number
+console.log("The result is: " + result); // Output: 3
 
-let isValid = Boolean("false");
+// Bug 2: Boolean conversion of a non-empty string
+
+let isValid = ("false" === "true");  // Fix: "false" is a non-empty string, so it evaluates to true.
 if (isValid) {
-    console.log("This is valid!");
+  console.log("This is valid!");
+} else {
+  console.log("This is NOT valid!");
 }
 
+
 let age = "25";
-let totalAge = age + 5;
-console.log("Total Age: " + totalAge);
+let totalAge = Number(age) + 5;// Explicitly converts "25" to a number
+console.log("Total Age: " + totalAge);// output: 30
+
+
+//Part 2
+//Implicit Type Conversion Example (Type Coercion)
+let num = "10" * 2; // JavaScript converts "10" to a number
+console.log("Implicit Conversion:", num, "| Type:", typeof num); 
+// Output: Implicit Conversion: 20 | Type: number
+
+//Explicit Type Conversion Example
+let sNum = "42";
+let convrtNum = Number(sNum); // Explicitly converting string to number
+console.log("Before Conversion:", sNum, "| Type:", typeof sNum);
+console.log("After Conversion:", convrtNum, "| Type:", typeof convrtNum);
+// Output: 
+// Before Conversion: 42 | Type: string
+// After Conversion: 42 | Type: number
+
+
+ //Edge Case Example (NaN, undefined, null)
+console.log("Number('Hello'):", Number("Hello")); // NaN (Not a Number)
+console.log("Number(null):", Number(null)); // 0 (null converts to 0)
+console.log("Number(undefined):", Number(undefined)); // NaN (undefined cannot be converted)
